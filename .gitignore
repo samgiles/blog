@@ -1,0 +1,4 @@
+public/
+.hugo/*
+tags
+tags.lock
