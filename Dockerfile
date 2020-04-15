@@ -16,6 +16,8 @@ RUN hugo --minify
 
 FROM nginx:1.17-alpine
 
+RUN apk update && apk add curl
+
 WORKDIR /usr/share/nginx/html
 
 COPY nginx/expires.inc /etc/nginx/conf.d/expires.inc
