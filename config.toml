@@ -17,16 +17,11 @@ pygmentscodefencesguesssyntax = true
     description = "Blog"
     keywords = "blog,developer,personal,site reliability engineering,rust,sre,devops"
 
-    favicon_32 = "/img/favicon-32x32.png"
-    favicon_16 = "/img/favicon-16x16.png"
-
     hidecredits = true
     hidecopyright = true
 
     rtl = false
-
     math = true
-    custom_css = ["css/custom.css"]
 
     hideFooter = false
     hideCredits = false

@@ -25,4 +25,4 @@ RUN chmod 0644 /etc/nginx/conf.d/expires.inc
 
 RUN sed -i '9i\        include /etc/nginx/conf.d/expires.inc;\n' /etc/nginx/conf.d/default.conf
 
-COPY --from=builder /app/src/public /usr/share/nginx/html
+COPY --from=builder /app/src/public/ /usr/share/nginx/html/
