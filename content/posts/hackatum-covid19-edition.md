@@ -74,7 +74,7 @@ You can check out the pitch that included a [live demo on YouTube](https://www.y
 
 ## Tools and libraries we used
 
-The frontend was written as a React single page web app - while I have strong feelings about the React ecosystem, I think it makes it very easy to build consumer facing apps that are really heavy on the mobile web and therefore frustrating or inaccessible to a large proportion of the web's users... For a hackday, precisely because it is a productive framework that makes things easier, we managed to get a really cool looking app running very quickly. You can find [the code on GitHub here](https://github.com/hack2020team/pe-fe).
+The frontend was written as a React single page web app - while I have strong feelings about the React ecosystem because I think it makes it very easy to build consumer facing apps that are really heavy on the mobile web and therefore frustrating or inaccessible to a large proportion of the web's users... For a hackday, precisely because it is a productive framework that makes things easier, we managed to get a really cool looking app running very quickly. You can find [the code on GitHub here](https://github.com/hack2020team/pe-fe).
 
 The messaging service was written in Rust using the [`async_tungstenite` crate](https://docs.rs/async-tungstenite/) for websockets, and the [`tonic` crate](https://github.com/hyperium/tonic) for gRPC. The code can be found [on GitHub here](https://github.com/hack2020team/backend-services).
 
