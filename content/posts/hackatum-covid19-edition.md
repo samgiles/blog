@@ -31,17 +31,17 @@ Our team besides me was [Ewelina](https://www.linkedin.com/in/ewelina-gromada-4a
 
 ## The prototype we built
 
-Our small team, dubbed the "frontend team", managed to build a small working prototype consisting of a single page web app and a scalable backend incorporating one feature extraction service, a websocket server that could handle receiving the a stream of frames, and a really simple "classifier" to turn the response from the feature extraction into a presence event.
+Our small team, dubbed the "frontend team", managed to build a small working prototype consisting of a single page web app and a scalable backend incorporating one feature extraction service, a websocket server that could handle receiving a stream of frames, and a really simple "classifier" to turn the response from the feature extraction into a presence event.
 
 {{<figure src="/images/ml-architecture-hackathon.svg" caption="Architecture diagram, the feature extractor in blue is all we had time to build... 😞 the parts in red were aspirational 😃" >}}
 
 First off we needed some way of getting frames from the student's webcam to the feature extraction service. I wanted to use WebRTC to stream the frames to the server, but since I only had a day I quickly gave up on getting that to work reliably. Instead we had a hacky approach that would send an encoded frame down a websocket connection at a rate of approximately $5fps$.  The messaging server would then decode the frame, validate the image format and forward it to the feature extraction service.
 
-The websocket server was written in Rust, you can see the code [here](https://github.com/hack2020team/backend-services/tree/master/messaging) but, fair warning: it's really hacky! I really liked using Rust for this because I could write incredibly hacky code fast with a lot of confidence that it would be stable and do what I expect. I'm happy to report, at the time of writing the service has been up for nearly 22h without a crash, and we even had a live demo that actually worked flawlessly! Rust really is awesome!
+The websocket server was written in Rust, you can see the code [here](https://github.com/hack2020team/backend-services/tree/master/messaging) but, fair warning, it's really hacky! I really liked using Rust for this because I could write incredibly hacky code fast with a lot of confidence that it would be stable and do what I expect. I'm happy to report, at the time of writing the service has been up for nearly 22h without a crash, and we even had a live demo that actually worked flawlessly! Rust really is awesome!
 
-Since we only ended up using a single feature extractor we could probably have used a single instance of a server that could handle the extraction, the websocket connection, and the rudimentary classification. But we were ambitious and wanted to incorporate more than one feature detection method so I left room in the architecture to add this easily.  Besides, I wanted to use Rust to handle the user connection, and the feature extraction and classification stuff that our colleague had been working on was written in Python.
+Since we ended up only using a single feature extractor, we probably could have used a single service to handle the extraction, the websocket connection, and the rudimentary classification. But we were ambitious and wanted to incorporate more than one feature detection method so I left room in the architecture to add this easily.  Besides, I wanted to use Rust to handle the user connection, and the feature extraction and classification stuff that our colleague had been working on was written in Python.
 
-For ease of use, I used [gRPC for Python](https://grpc.io/docs/tutorials/basic/python/), all I needed to do was define a Protobuf version of the service, and I had a working client ready in Rust, and a server implementation for Python that made it really easy to wrap the code our team member [@tbcpitw](https://twitter.com/tbcpitw) had iterated on locally. You can find the unwrapped code [here](https://github.com/nurlanov-zh/YouLearn-AI-team) which is based off of a few open source examples.
+For ease of use, I used [gRPC for Python](https://grpc.io/docs/tutorials/basic/python/), all I needed to do was define a protobuf version of the service and I had a working client ready in Rust, and a server implementation for Python that made it really easy to wrap the code our team member [@tbcpitw](httpsI//twitter.com/tbcpitw) had iterated on locally. You can find the unwrapped code [here](https://github.com/nurlanov-zh/YouLearn-AI-team) which is based off of a few open source examples.
 
 The protobuf for the head pose service was minimal, we send an encoded frame, and receive a response containing a vector encoding the extracted feature.
 
@@ -62,7 +62,7 @@ service HeadPoseApi {
 ```
 
 
-Each frame would be processed independent of any other frame which made implementation and horizontal scaling really easy. This would have been significantly more complex if there was a temporal requirement for feature extraction. If that was temporal data was needed maybe we could send a stream of frames and process a short time slice at a time depending on how much temporal data is required.
+Each frame would be processed independent of any other frame which made implementation and horizontal scaling really easy. This would have been significantly more complex if there was a temporal requirement for feature extraction. If temporal data was required we could perhaps have sent a stream of frames to the extractor and process a short time slice at a time depending on the length of temporal data required.
 
 Since we only had a simple implementation the only "classification" we had time for was an indication presence. The head pose estimator would return an empty vector back to the messaging service if no face was detected. In our hackday implementation we had some boring but effective logic for a demo: if we stopped detecting a face for $5$ frames then we send an event with an increasing probability value linearly trending towards $1.0$ as we reach $20$ frames without detecting a face.
 
