@@ -1,6 +1,6 @@
 +++
 title = "HackaTUM: hackaTUM_C0dev1d19"
-date = "2020-04-17T00:00:00+01:00"
+date = "2020-04-19T19:30:00+01:00"
 tags = [
   "rust",
   "machine learning",
