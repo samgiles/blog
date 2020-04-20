@@ -64,13 +64,13 @@ service HeadPoseApi {
 
 Each frame would be processed independent of any other frame which made implementation and horizontal scaling really easy. This would have been significantly more complex if there was a temporal requirement for feature extraction. If temporal data was required we could perhaps have sent a stream of frames to the extractor and process a short time slice at a time depending on the length of temporal data required.
 
-Since we only had a simple implementation the only "classification" we had time for was an indication presence. The head pose estimator would return an empty vector back to the messaging service if no face was detected. In our hackday implementation we had some boring but effective logic for a demo: if we stopped detecting a face for $5$ frames then we send an event with an increasing probability value linearly trending towards $1.0$ as we reach $20$ frames without detecting a face.
+Since we only had a simple implementation the only "classification" we had time for was an indication of presence. The head pose estimator would return an empty vector back to the messaging service if no face was detected. In our hackday implementation we had some boring but effective logic for a demo: if we stopped detecting a face for $5$ frames then we send an event with an increasing probability value linearly trending towards $1.0$ as we reach $20$ frames without detecting a face.
 
 When the frontend, built by [Ewelina](https://www.linkedin.com/in/ewelina-gromada-4a70ab119), [@jsincn](https://twitter.com/jsincn), and [@AqibAnsr](https://twitter.com/AqibAnsr), receives a message, it would then prompt the student to try and re-engage them. Check out this tiny demo I made of me not paying attention and an alert popping up. Black Mirror fans may be thinking about the [_Fifteen Million Merits_](https://en.wikipedia.org/wiki/Fifteen_Million_Merits) episode, but that aside... I think it's a pretty cool tech demo!
 
 {{< video src="/images/hackatum-demo.webm" >}}
 
-You can check out the pitch that included a [live demo on YouTube](https://www.youtube.com/watch?v=wHf8OxEpl3A)!
+You can check out the pitch that included a [live demo on YouTube](https://youtu.be/wHf8OxEpl3A?t=13324)!
 
 ## Tools and libraries we used
 
