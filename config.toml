@@ -1,11 +1,11 @@
 baseurl = "https://samgil.es"
 title = "samgiles"
-theme = "hugo-coder"
+theme = "hugo-coder2"
 languagecode = "en"
 defaultcontentlanguage = "en"
 
 paginate = 20
-canonifyurls = true
+canonifyurls = false
 
 pygmentsstyle = "bw"
 pygmentscodefences = true
@@ -24,7 +24,7 @@ pygmentscodefencesguesssyntax = true
     math = true
 
     hideFooter = false
-    hideCredits = false
+    hideCredits = true
     hideCopyright = false
     since = 2020
 
@@ -59,10 +59,10 @@ pygmentscodefencesguesssyntax = true
 
 # Menu links
 [[menu.main]]
-    name = "blog"
+    name = "Blog"
     weight = 1
     url  = "/posts/"
 [[menu.main]]
-    name = "about"
+    name = "About"
     weight = 2
     url = "/about/"
