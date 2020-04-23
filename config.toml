@@ -5,7 +5,7 @@ languagecode = "en"
 defaultcontentlanguage = "en"
 
 paginate = 20
-canonifyurls = false
+canonifyurls = true
 
 pygmentsstyle = "bw"
 pygmentscodefences = true
