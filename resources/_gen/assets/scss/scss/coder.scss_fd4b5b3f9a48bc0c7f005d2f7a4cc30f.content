@@ -303,6 +303,10 @@ figure {
 .fas {
   font-weight: 900; }
 
+#scrollmarker {
+  position: relative;
+  bottom: 20rem; }
+
 .content {
   flex: 1;
   display: flex;

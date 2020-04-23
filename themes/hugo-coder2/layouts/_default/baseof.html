@@ -112,5 +112,20 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
     {{ range .Site.Params.custom_js }}
       <script src="{{ . | relURL }}"></script>
     {{ end }}
+    <div id="scrollmarker"></div>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        (function(src) {
+          if (window.doNotTrack !== 1) {
+            window.___pageLoadTime = Date.now();
+            var script = document.createElement('script');
+            script.async = script.defer = true;
+            script.src = src;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(script, s);
+          }
+        }('/js/extra.js'));
+      });
+    </script>
   </body>
 </html>
