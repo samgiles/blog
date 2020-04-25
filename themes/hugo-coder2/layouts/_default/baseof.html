@@ -20,7 +20,7 @@
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
     {{ if .Permalink }}
-      <link rel="canonical" href="{{ .Permalink }}">
+    <!-- <link rel="canonical" href="{{ .Permalink }}"> -->
     {{ end }}
 
 <style>
@@ -115,16 +115,17 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
     <div id="scrollmarker"></div>
     <script>
       window.addEventListener('DOMContentLoaded', (event) => {
-        (function(src) {
-          if (navigator.doNotTrack !== 1) {
-            window.___pageLoadTime = Date.now();
+        window.___pageLoadTime = Date.now();
+
+        if ('ArrayBuffer' in window && 'DataView' in window && 'Uint8Array' in window && 'Blob' in window && ('fetch' in window || 'sendBeacon' in navigator)) {
+          (function(src) {
             var script = document.createElement('script');
             script.async = script.defer = true;
             script.src = src;
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(script, s);
-          }
-        }('/js/extra.js'));
+          }('/js/extra.js'));
+        }
       });
     </script>
   </body>
