@@ -34,6 +34,10 @@
       <base href="{{ .Permalink }}">
     {{ end }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" />
+    <script src="/js/extra.min.js" defer></script>
+    <script>
+var a=document.createElement("script"),b="defer"in a&&"async"in a;window.ctm="object"===typeof document.documentElement.dataset&&"visibilityState"in document&&b;
+    </script>
   </head>
   <body class="colorscheme-light">
     <main class="wrapper">
@@ -47,8 +51,7 @@
     </main>
     <div id="scrollmarker"></div>
     <script>
-window.addEventListener("DOMContentLoaded",function(b){var a=[];"ArrayBuffer"in window&&"DataView"in window&&"Uint8Array"in window&&"Blob"in window&&"sendBeacon"in navigator&&(window.___pageLoadTime=Date.now(),a.push(["/js/extra.min.js",!0]));"Promise"in window||a.push(["https://polyfill.io/v3/polyfill.min.js?features=es6",!1]);if(0<a.length){var d=a.length;for(b=document.createDocumentFragment();d--;){var c=document.createElement("script"),e=a[d];e[1]&&(c.defer=!0);c.src=e[0];b.appendChild(c)}a=
-document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)}});
+(function(){function a(b){b in c||(c[b]=!0,document.dispatchEvent(new CustomEvent("u."+b)))}function d(){"complete"===document.readyState?a("DOMContentLoaded"):"interactive"!==document.readyState||document.attachEvent||a("DOMContentLoaded")}if(window.ctm){var c={};document.addEventListener("DOMContentLoaded",a.bind(null,"DOMContentLoaded"));document.onreadystatechange=d;d()}})();
     </script>
   </body>
 </html>
