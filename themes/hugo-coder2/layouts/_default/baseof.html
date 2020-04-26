@@ -27,6 +27,9 @@
     {{ if .Permalink }}
       <base href="{{ .Permalink }}">
     {{ end }}
+    {{ $cssOpts := (dict "targetPath" "css/fonts.css" ) }}
+    {{ $styles := resources.Get "scss/fonts.scss" | resources.ExecuteAsTemplate "style.fonts.css" . | toCSS $cssOpts | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" />
   </head>
   <body class="colorscheme-light">
     <main class="wrapper">
