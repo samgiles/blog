@@ -8,6 +8,7 @@
     <link rel="preload" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" as="style" crossorigin/>
     <link rel="preload" href="/fonts/latin-lato.woff2" as="font" type="font/woff2" crossorigin/>
     <link rel="preload" href="/fonts/latin-merriweather.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="/js/extra.min.js" as="script" crossorigin/>
 
     {{ with resources.Get "scss/coder-critical.scss" | toCSS | minify }}
     <style>
