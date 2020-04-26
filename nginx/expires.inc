@@ -1,6 +1,6 @@
 # cache.appcache, your document html and data
-location ~* \.(?:manifest|appcache|html?|xml|json)$ {
-  expires 30m;
+location ~* \.(?:manifest|appcache|html?|json)$ {
+  expires 2h;
   add_header Cache-Control "public, stale-while-revalidate=3600, stale-if-error=7200";
 }
 
@@ -11,7 +11,7 @@ location ~* \.(?:rss|atom)$ {
 }
 
 # Media: images, icons, video, audio, HTC
-location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ {
+location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc|woff2)$ {
   expires max;
   access_log off;
   add_header Cache-Control "public, stale-while-revalidate=3600, stale-if-error=7200";
