@@ -62,15 +62,6 @@
   }
 }
 
-.avatar img{
-  width: 20rem;
-  height: auto;
-  border-radius: 50%;
-  @media only screen and (max-width : 768px) {
-    width: 10rem;
-  }
-}
-
 .list {
   ul {
     margin: 3.2rem 0 3.2rem 0;
@@ -150,24 +141,10 @@
       }
     }
   }
+}
 
-  .error {
-    text-align: center;
-    h1 {
-      margin-top: 2.0rem;
-      margin-bottom: 0.5rem;
-      font-size: 4.6rem;
-      @media only screen and (max-width : 768px) {
-        font-size: 3.2rem;
-      }
-    }
-    h2 {
-      margin-top: 2.0rem;
-      margin-bottom: 3.2rem;
-      font-size: 3.2rem;
-      @media only screen and (max-width : 768px) {
-        font-size: 2.8rem;
-      }
-    }
-  }
+.metaicon {
+  position: relative;
+  top: 0.19em;
+  height: 1em;
 }

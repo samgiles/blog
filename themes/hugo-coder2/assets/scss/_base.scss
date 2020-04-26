@@ -187,14 +187,6 @@ figure {
   padding-right: 2.0rem;
 }
 
-.fab {
-  font-weight: 400;
-}
-
-.fas {
-  font-weight: 700;
-}
-
 .float-right {
   float: right;
 }
@@ -203,15 +195,15 @@ figure {
   float: left;
 }
 
-.fab {
-  font-weight: 400;
+.socialicon {
+  height: 2em;
+  @media only screen and (max-width : 768px) {
+    font-size: 1.4rem;
+  }
+  &:hover {
+    fill: $link-color;
+  }
 }
-
-.fas {
-  font-weight: 900;
-}
-
-#scrollmarker {
-  position: relative;
-  bottom: 20rem;
+.menuicon {
+  height: 1.1em;
 }

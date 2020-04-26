@@ -13,11 +13,11 @@ categories = [
 draft = true
 +++
 
-In a [previous post](efficient-rust-services-timeouts/) we talked about how to timeout IO requests. In this post we'll talk about how to timeout tasks that are not necessarily IO bound but also involve CPU bound workloads.
+In a [previous post](efficient-rust-services-timeouts/) we talked about how to timeout IO requests. In this post we'll talk about how to timeout tasks that are not only IO bound but also involve CPU bound workloads.
 
 ## Computing stuff within async/await
 
-Rust's async/await support is great for IO.  The typical use case is calling another service or building a server to handle network requests.  But what happens when, between responding to a request or making a network request, we want to perform some arbitrary computations?
+Rust's async/await support is great for IO.  The typical use case is calling another service or building a server to handle network requests.  But what happens when, between responding to a request or making a network request, we want to perform some useful computations?
 
 Microservice jokes aside, let's imagine we have a service that makes a request to an upstream server for a $start$ float, and in a loop adds $0.01$ until it reaches the requested value. 
 

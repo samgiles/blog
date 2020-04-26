@@ -1,0 +1,26 @@
+#scrollmarker {
+  position: relative;
+  bottom: 20rem;
+}
+
+.centered {
+  .error {
+    text-align: center;
+    h1 {
+      margin-top: 2.0rem;
+      margin-bottom: 0.5rem;
+      font-size: 4.6rem;
+      @media only screen and (max-width : 768px) {
+        font-size: 3.2rem;
+      }
+    }
+    h2 {
+      margin-top: 2.0rem;
+      margin-bottom: 3.2rem;
+      font-size: 3.2rem;
+      @media only screen and (max-width : 768px) {
+        font-size: 2.8rem;
+      }
+    }
+  }
+}
