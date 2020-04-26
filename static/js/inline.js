@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', function(ev) {
         var s = document.createElement('script');
         var e = srcs[i];
         if (e[1]) {
-          s.async = s.defer = true;
+          s.defer = true;
         }
         s.src = e[0];
         frag.appendChild(s);
