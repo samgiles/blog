@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#fafafa">
-    {{ $cssOpts := (dict "targetPath" "css/fonts.css" ) }}
-    {{ $styles := resources.Get "scss/fonts.scss" | resources.ExecuteAsTemplate "style.fonts.css" . | toCSS $cssOpts | minify | fingerprint }}
-    <link rel="preload" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" as="style" crossorigin/>
     <link rel="preload" href="/fonts/latin-lato.woff2" as="font" type="font/woff2" crossorigin/>
     <link rel="preload" href="/fonts/latin-merriweather.woff2" as="font" type="font/woff2" crossorigin/>
     <link rel="preload" href="/js/extra.min.js" as="script" crossorigin/>
@@ -30,13 +27,12 @@
     <link rel="apple-touch-icon" href="/images/icons/apple_icon.png">
 
     {{ if .Permalink }}
-    <!-- <link rel="canonical" href="{{ .Permalink }}"> -->
+    <link rel="canonical" href="{{ .Permalink }}">
     {{ end }}
 
     {{ if .Permalink }}
-      <base href="{{ .Permalink }}">
+    <base href="{{ .Permalink }}">
     {{ end }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" />
     <script src="/js/extra.min.js" defer crossorigin></script>
     <script>
 var a=document.createElement("script"),b="defer"in a&&"async"in a;window.ctm="object"===typeof document.documentElement.dataset&&"visibilityState"in document&&b;
