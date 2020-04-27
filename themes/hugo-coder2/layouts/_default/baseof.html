@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fafafa">
     {{ $cssOpts := (dict "targetPath" "css/fonts.css" ) }}
     {{ $styles := resources.Get "scss/fonts.scss" | resources.ExecuteAsTemplate "style.fonts.css" . | toCSS $cssOpts | minify | fingerprint }}
     <link rel="preload" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" as="style" crossorigin/>
@@ -26,6 +27,7 @@
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
     <link rel="icon" type="image/png" href="/images/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="/images/icons/apple_icon.png">
 
     {{ if .Permalink }}
     <!-- <link rel="canonical" href="{{ .Permalink }}"> -->
