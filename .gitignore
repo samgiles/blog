@@ -2,3 +2,4 @@ public/
 .hugo/*
 tags
 tags.lock
+.DS_Store

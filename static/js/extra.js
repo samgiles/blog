@@ -103,7 +103,7 @@
       timingInfo = collectTiming();
     });
 
-    window.addEventListener("unload", () => {
+    window.addEventListener("beforeunload", () => {
       let page = metrics(pageLoadTime);
       let blob = serialize([
         page.dwell,
