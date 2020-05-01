@@ -92,8 +92,8 @@
     }
     return new Uint8Array(buffer);
   }
-
-  document.addEventListener('u.DOMContentLoaded', function() {
+  
+  function init() {
     let pageLoadTime = Date.now();
     let metrics = pageMetrics();
     let idleCallback = window.requestIdleCallback || function(handler) { window.setTimeout(function() { handler(); }, 1); };
@@ -103,7 +103,7 @@
       timingInfo = collectTiming();
     });
 
-    window.addEventListener("beforeunload", () => {
+    window.addEventListener("unload", () => {
       let page = metrics(pageLoadTime);
       let blob = serialize([
         page.dwell,
@@ -111,5 +111,11 @@
       ].concat(timingInfo.timing));
       navigator.sendBeacon("/perf/pageview?n="+timingInfo.net, new Blob([blob.buffer], {type:"text/plain"}));
     });
-  });
+  }
+
+  if (document.readyState === 'complete' || (document.readyState == 'interactive' && !document.attachEvent)) {
+    init();
+  } else {
+    document.addEventListener('u.DOMContentLoaded', init.bind(null));
+  }
 }());
